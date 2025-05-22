@@ -1,0 +1,29 @@
+@use "breakpoints" as mx;
+
+@mixin breakpoint($bp, $type: min) {
+  @if $bp == tablet and $type == min {
+    @media (min-width: mx.$bp-tablet) {
+      @content;
+    }
+  }
+
+  @if $bp == tablet and $type == max {
+    $bp-max: mx.$bp-tablet - 1px;
+    @media (max-width: $bp-max) {
+      @content;
+    }
+  }
+
+  @if $bp == desktop and $type == min {
+    @media (min-width: mx.$bp-desktop) {
+      @content;
+    }
+  }
+
+  @if $bp == desktop and $type == max {
+    $bp-max: mx.$bp-desktop - 1px;
+    @media (max-width: $bp-max) {
+      @content;
+    }
+  }
+}
